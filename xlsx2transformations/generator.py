@@ -77,6 +77,13 @@ class TransformationGenerator:
 
                 transformation['match'] = match
 
+            elif operation == 'retain':
+                match = dict()
+                match['file'] = worksheet.title
+                match = match | self._create_file_match(worksheet.title, headers, row)
+
+                transformation['match'] = match
+
             self._transformations.append(transformation)
 
     def _create_file_match(self, filename, headers, row):
