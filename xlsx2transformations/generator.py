@@ -40,7 +40,7 @@ class TransformationGenerator:
         headers = list()
         for cell in worksheet.iter_cols(min_row=1, max_row=1, values_only=True):
             if cell[0] != 'op':
-                headers.append(cell[0])
+                headers.append(str(cell[0]))
 
         for row in worksheet.iter_rows(min_row=2, values_only=True):
             operation = row[0].strip()
@@ -53,14 +53,14 @@ class TransformationGenerator:
                 obj['file'] = worksheet.title
 
                 for index, header in enumerate(headers):
-                    value = row[index + 1]
+                    value = str(row[index + 1])
                     obj[header] = value
 
                 transformation['obj'] = obj
             elif operation == 'update':
                 update = dict()
                 for index, header in enumerate(headers):
-                    value = row[index + 1]
+                    value = str(row[index + 1])
                     update[header] = value
 
                 match = dict()
@@ -89,6 +89,6 @@ class TransformationGenerator:
         match = dict()
         for key in keys:
             if key in headers:
-                match[key] = row[headers.index(key) + 1]
+                match[key] = str(row[headers.index(key) + 1])
         
         return match
