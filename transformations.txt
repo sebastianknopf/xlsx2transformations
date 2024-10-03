@@ -1,0 +1,2 @@
+{"op": "add", "obj": {"file": "agency.txt", "agency_id": "agency-4711", "agency_name": "Test", "agency_url": "https://test.de", "agency_timezone": "Europe/Berlin"}}
+{"op": "update", "update": {"route_id": 1, "agency_id": "agency-4711", "route_short_name": 1, "route_long_name": "Test", "route_color": "#ff0000", "route_text_color": "#ffffff"}, "match": {"file": "routes.txt", "route_id": 1}}
