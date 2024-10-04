@@ -91,6 +91,10 @@ class TransformationGenerator:
             return self._create_match(['agency_id'], headers, row)
         elif filename == 'routes.txt':
             return self._create_match(['route_id'], headers, row)
+        elif filename == 'stops.txt':
+            return self._create_file_match(['stop_id'], headers, row)
+        elif filename == 'trips.txt':
+            return self._create_file_match(['trip_id'], headers, row)
     
     def _create_match(self, keys, headers, row):
         match = dict()
