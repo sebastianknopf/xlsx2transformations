@@ -53,15 +53,13 @@ class TransformationGenerator:
                 obj['file'] = worksheet.title
 
                 for index, header in enumerate(headers):
-                    value = str(row[index + 1])
-                    obj[header] = value
+                    obj[header] = self._sanitize_value(row[index + 1])
 
                 transformation['obj'] = obj
             elif operation == 'update':
                 update = dict()
                 for index, header in enumerate(headers):
-                    value = str(row[index + 1])
-                    update[header] = value
+                    update[header] = self._sanitize_value(row[index + 1])
 
                 match = dict()
                 match['file'] = worksheet.title
@@ -103,3 +101,9 @@ class TransformationGenerator:
                 match[key] = str(row[headers.index(key) + 1])
         
         return match
+
+    def _sanitize_value(self, value):
+        if value is not None:
+            return str(value).strip()
+        else:
+            return ''
